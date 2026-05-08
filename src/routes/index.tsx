@@ -56,7 +56,14 @@ function Stamp({
   ].join(",");
   return (
     <div
-      className={`relative bg-cream p-3 shadow-2xl ${className}`}
+      className={`relative bg-cream p-3 shadow-2xl keepsake ${className}`}
+      onClick={(e) => {
+        const t = e.currentTarget;
+        t.classList.remove("pop");
+        // force reflow to restart animation
+        void t.offsetWidth;
+        t.classList.add("pop");
+      }}
       style={{
         WebkitMask: edgeMask,
         mask: edgeMask,
@@ -82,7 +89,13 @@ function Polaroid({
 }) {
   return (
     <div
-      className={`bg-cream p-3 pb-10 shadow-2xl ${className}`}
+      className={`bg-cream p-3 pb-10 shadow-2xl keepsake ${className}`}
+      onClick={(e) => {
+        const t = e.currentTarget;
+        t.classList.remove("pop");
+        void t.offsetWidth;
+        t.classList.add("pop");
+      }}
       style={{ filter: "drop-shadow(0 22px 30px rgb(0 0 0 / 0.45))" }}
     >
       <img src={src} alt={alt} className="block w-full h-full object-cover" />
@@ -148,7 +161,7 @@ function SlideCover() {
 
       <div className="grid md:grid-cols-2 gap-10 items-center w-full max-w-7xl mx-auto">
         <div className="text-cream animate-fade-up">
-          <h1 className="font-script text-cream leading-[0.9] text-7xl md:text-9xl drop-shadow-lg">
+          <h1 className="font-script shimmer-text leading-[0.9] text-7xl md:text-9xl drop-shadow-lg">
             Happy<br />Birthday
           </h1>
           <p className="mt-8 max-w-sm text-cream/90 text-sm md:text-base leading-relaxed animate-fade-up delay-2">
@@ -526,6 +539,70 @@ function Dots({ count, active }: { count: number; active: number }) {
   );
 }
 
+/* ---------- Ambient overlays ---------- */
+
+function Sparkles({ count = 18 }: { count?: number }) {
+  const items = Array.from({ length: count });
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {items.map((_, i) => {
+        const left = Math.random() * 100;
+        const delay = Math.random() * 6;
+        const dur = 4 + Math.random() * 5;
+        const dx = (Math.random() - 0.5) * 80;
+        const size = 6 + Math.random() * 12;
+        return (
+          <span
+            key={i}
+            className="sparkle"
+            style={{
+              left: `${left}%`,
+              bottom: `-20px`,
+              width: size,
+              height: size,
+              animationDelay: `${delay}s`,
+              animationDuration: `${dur}s`,
+              ["--dx" as never]: `${dx}px`,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+function Hearts({ count = 12 }: { count?: number }) {
+  const items = Array.from({ length: count });
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {items.map((_, i) => {
+        const left = Math.random() * 100;
+        const delay = Math.random() * 8;
+        const dur = 8 + Math.random() * 8;
+        const size = 10 + Math.random() * 16;
+        return (
+          <svg
+            key={i}
+            viewBox="0 0 24 24"
+            className="heart"
+            style={{
+              left: `${left}%`,
+              width: size,
+              height: size,
+              animationDelay: `${delay}s`,
+              animationDuration: `${dur}s`,
+              fill: "var(--cream)",
+              opacity: 0.55,
+            }}
+          >
+            <path d="M12 21s-7-4.35-9.5-8.5C.8 9.6 2.5 5 6.5 5c2 0 3.4 1.1 4.5 2.6C12.1 6.1 13.5 5 15.5 5 19.5 5 21.2 9.6 19.5 12.5 17 16.65 12 21 12 21z" />
+          </svg>
+        );
+      })}
+    </div>
+  );
+}
+
 /* ---------- Page ---------- */
 
 function Index() {
@@ -544,14 +621,29 @@ function Index() {
     return () => stage.removeEventListener("scroll", onScroll);
   }, []);
 
+  // key per slide forces remount → replays all CSS animations on scroll-back
+  const slideEls = [
+    <SlideCover key={`c-${active === 0 ? "in" : "out"}`} />,
+    <SlideLetter key={`l-${active === 1 ? "in" : "out"}`} />,
+    <SlideFunFact key={`f-${active === 2 ? "in" : "out"}`} />,
+    <SlideMemories key={`m-${active === 3 ? "in" : "out"}`} />,
+    <SlideEternity key={`e-${active === 4 ? "in" : "out"}`} />,
+  ];
+
   return (
-    <main ref={stageRef} className="snap-stage bg-gingham">
-      <SlideCover />
-      <SlideLetter />
-      <SlideFunFact />
-      <SlideMemories />
-      <SlideEternity />
+    <main ref={stageRef} className="snap-stage bg-gingham relative">
+      {/* Global ambient layers (fixed so they float above gingham, below content) */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <Hearts count={14} />
+        <Sparkles count={20} />
+      </div>
+      {slideEls.map((el, i) => (
+        <div key={i} className="relative z-10">
+          {el}
+        </div>
+      ))}
       <Dots count={slides} active={active} />
     </main>
   );
 }
+
