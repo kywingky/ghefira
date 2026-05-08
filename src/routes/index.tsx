@@ -460,9 +460,20 @@ function SlideEternity() {
       <div
         className="relative w-full max-w-2xl bg-cream-soft py-16 px-10 md:px-16 shadow-2xl animate-drop"
         style={{
-          WebkitMask:
-            "radial-gradient(circle 10px at 10px 10px, transparent 9.5px, #000 10px) -10px -10px/20px 20px",
-          mask: "radial-gradient(circle 10px at 10px 10px, transparent 9.5px, #000 10px) -10px -10px/20px 20px",
+          WebkitMask: [
+            "radial-gradient(circle 10px at 10px 50%, transparent 9.5px, #000 10px) left/20px 22px repeat-y",
+            "radial-gradient(circle 10px at calc(100% - 10px) 50%, transparent 9.5px, #000 10px) right/20px 22px repeat-y",
+            "radial-gradient(circle 10px at 50% 10px, transparent 9.5px, #000 10px) top/22px 20px repeat-x",
+            "radial-gradient(circle 10px at 50% calc(100% - 10px), transparent 9.5px, #000 10px) bottom/22px 20px repeat-x",
+            "linear-gradient(#000,#000) center/calc(100% - 40px) calc(100% - 40px) no-repeat",
+          ].join(","),
+          mask: [
+            "radial-gradient(circle 10px at 10px 50%, transparent 9.5px, #000 10px) left/20px 22px repeat-y",
+            "radial-gradient(circle 10px at calc(100% - 10px) 50%, transparent 9.5px, #000 10px) right/20px 22px repeat-y",
+            "radial-gradient(circle 10px at 50% 10px, transparent 9.5px, #000 10px) top/22px 20px repeat-x",
+            "radial-gradient(circle 10px at 50% calc(100% - 10px), transparent 9.5px, #000 10px) bottom/22px 20px repeat-x",
+            "linear-gradient(#000,#000) center/calc(100% - 40px) calc(100% - 40px) no-repeat",
+          ].join(","),
           filter: "drop-shadow(0 25px 35px rgb(0 0 0 / 0.5))",
         }}
       >
