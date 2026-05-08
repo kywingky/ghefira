@@ -46,15 +46,21 @@ function Stamp({
   className?: string;
   innerClass?: string;
 }) {
-  // Postage stamp scalloped edges via mask
-  const mask =
-    "radial-gradient(circle 7px at 7px 7px, transparent 6.5px, #000 7px) -7px -7px/14px 14px";
+  // Scalloped edge ONLY on the outer border (not across the photo)
+  const edgeMask = [
+    "radial-gradient(circle 6px at 6px 50%, transparent 5.5px, #000 6px) left/12px 14px repeat-y",
+    "radial-gradient(circle 6px at calc(100% - 6px) 50%, transparent 5.5px, #000 6px) right/12px 14px repeat-y",
+    "radial-gradient(circle 6px at 50% 6px, transparent 5.5px, #000 6px) top/14px 12px repeat-x",
+    "radial-gradient(circle 6px at 50% calc(100% - 6px), transparent 5.5px, #000 6px) bottom/14px 12px repeat-x",
+    "linear-gradient(#000,#000) center/calc(100% - 24px) calc(100% - 24px) no-repeat",
+  ].join(",");
   return (
     <div
       className={`relative bg-cream p-3 shadow-2xl ${className}`}
       style={{
-        WebkitMask: mask,
-        mask,
+        WebkitMask: edgeMask,
+        mask: edgeMask,
+        WebkitMaskComposite: "source-over",
         filter: "drop-shadow(0 18px 24px rgb(0 0 0 / 0.5))",
       }}
     >
