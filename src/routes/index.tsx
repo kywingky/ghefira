@@ -56,7 +56,14 @@ function Stamp({
   ].join(",");
   return (
     <div
-      className={`relative bg-cream p-3 shadow-2xl ${className}`}
+      className={`relative bg-cream p-3 shadow-2xl keepsake ${className}`}
+      onClick={(e) => {
+        const t = e.currentTarget;
+        t.classList.remove("pop");
+        // force reflow to restart animation
+        void t.offsetWidth;
+        t.classList.add("pop");
+      }}
       style={{
         WebkitMask: edgeMask,
         mask: edgeMask,
@@ -82,7 +89,13 @@ function Polaroid({
 }) {
   return (
     <div
-      className={`bg-cream p-3 pb-10 shadow-2xl ${className}`}
+      className={`bg-cream p-3 pb-10 shadow-2xl keepsake ${className}`}
+      onClick={(e) => {
+        const t = e.currentTarget;
+        t.classList.remove("pop");
+        void t.offsetWidth;
+        t.classList.add("pop");
+      }}
       style={{ filter: "drop-shadow(0 22px 30px rgb(0 0 0 / 0.45))" }}
     >
       <img src={src} alt={alt} className="block w-full h-full object-cover" />
@@ -148,7 +161,7 @@ function SlideCover() {
 
       <div className="grid md:grid-cols-2 gap-10 items-center w-full max-w-7xl mx-auto">
         <div className="text-cream animate-fade-up">
-          <h1 className="font-script text-cream leading-[0.9] text-7xl md:text-9xl drop-shadow-lg">
+          <h1 className="font-script shimmer-text leading-[0.9] text-7xl md:text-9xl drop-shadow-lg">
             Happy<br />Birthday
           </h1>
           <p className="mt-8 max-w-sm text-cream/90 text-sm md:text-base leading-relaxed animate-fade-up delay-2">
