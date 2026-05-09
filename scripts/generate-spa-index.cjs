@@ -24,13 +24,16 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark">
-  <link rel="icon" href="/favicon.ico">
+  <title>Happy Birthday Ghefira</title>
   ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}">` : ''}
-  <title>Ghefira</title>
 </head>
 <body>
-  <div id="root"></div>
+  <script>
+    window.__TSR__ = {
+      matches: [],
+      streamedValues: {}
+    };
+  </script>
   <script type="module" src="/assets/${jsFile}"></script>
 </body>
 </html>`;
