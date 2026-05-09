@@ -559,63 +559,79 @@ function Dots({ count, active }: { count: number; active: number }) {
 /* ---------- Ambient overlays ---------- */
 
 function Sparkles({ count = 18 }: { count?: number }) {
-  const items = Array.from({ length: count });
+  const [items, setItems] = useState<
+    { left: number; delay: number; dur: number; dx: number; size: number }[] | null
+  >(null);
+
+  useEffect(() => {
+    const arr = Array.from({ length: count }).map(() => ({
+      left: Math.random() * 100,
+      delay: Math.random() * 6,
+      dur: 4 + Math.random() * 5,
+      dx: (Math.random() - 0.5) * 80,
+      size: 6 + Math.random() * 12,
+    }));
+    setItems(arr);
+  }, [count]);
+
+  // Render an empty container on the server / initial render so SSR matches
+  // the first client render. The randomised items are added after mount.
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {items.map((_, i) => {
-        const left = Math.random() * 100;
-        const delay = Math.random() * 6;
-        const dur = 4 + Math.random() * 5;
-        const dx = (Math.random() - 0.5) * 80;
-        const size = 6 + Math.random() * 12;
-        return (
-          <span
-            key={i}
-            className="sparkle"
-            style={{
-              left: `${left}%`,
-              bottom: `-20px`,
-              width: size,
-              height: size,
-              animationDelay: `${delay}s`,
-              animationDuration: `${dur}s`,
-              ["--dx" as never]: `${dx}px`,
-            }}
-          />
-        );
-      })}
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+      {items?.map((it, i) => (
+        <span
+          key={i}
+          className="sparkle"
+          style={{
+            left: `${it.left}%`,
+            bottom: `-20px`,
+            width: it.size,
+            height: it.size,
+            animationDelay: `${it.delay}s`,
+            animationDuration: `${it.dur}s`,
+            ["--dx" as never]: `${it.dx}px`,
+          }}
+        />
+      ))}
     </div>
   );
 }
 
 function Hearts({ count = 12 }: { count?: number }) {
-  const items = Array.from({ length: count });
+  const [items, setItems] = useState<
+    { left: number; delay: number; dur: number; size: number }[] | null
+  >(null);
+
+  useEffect(() => {
+    const arr = Array.from({ length: count }).map(() => ({
+      left: Math.random() * 100,
+      delay: Math.random() * 8,
+      dur: 8 + Math.random() * 8,
+      size: 10 + Math.random() * 16,
+    }));
+    setItems(arr);
+  }, [count]);
+
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {items.map((_, i) => {
-        const left = Math.random() * 100;
-        const delay = Math.random() * 8;
-        const dur = 8 + Math.random() * 8;
-        const size = 10 + Math.random() * 16;
-        return (
-          <svg
-            key={i}
-            viewBox="0 0 24 24"
-            className="heart"
-            style={{
-              left: `${left}%`,
-              width: size,
-              height: size,
-              animationDelay: `${delay}s`,
-              animationDuration: `${dur}s`,
-              fill: "var(--cream)",
-              opacity: 0.55,
-            }}
-          >
-            <path d="M12 21s-7-4.35-9.5-8.5C.8 9.6 2.5 5 6.5 5c2 0 3.4 1.1 4.5 2.6C12.1 6.1 13.5 5 15.5 5 19.5 5 21.2 9.6 19.5 12.5 17 16.65 12 21 12 21z" />
-          </svg>
-        );
-      })}
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+      {items?.map((it, i) => (
+        <svg
+          key={i}
+          viewBox="0 0 24 24"
+          className="heart"
+          style={{
+            left: `${it.left}%`,
+            width: it.size,
+            height: it.size,
+            animationDelay: `${it.delay}s`,
+            animationDuration: `${it.dur}s`,
+            fill: "var(--cream)",
+            opacity: 0.55,
+          }}
+        >
+          <path d="M12 21s-7-4.35-9.5-8.5C.8 9.6 2.5 5 6.5 5c2 0 3.4 1.1 4.5 2.6C12.1 6.1 13.5 5 15.5 5 19.5 5 21.2 9.6 19.5 12.5 17 16.65 12 21 12 21z" />
+        </svg>
+      ))}
     </div>
   );
 }
