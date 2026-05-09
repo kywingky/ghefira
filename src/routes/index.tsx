@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import portrait1 from "@/assets/portrait-1.jpg";
-import portrait2 from "@/assets/portrait-2.jpg";
+import portrait1 from "@/assets/foto 4.jpeg";
+import portrait2 from "@/assets/foto_2.jpeg";
 import meadow from "@/assets/friends-meadow.jpg";
 import dance from "@/assets/friends-dance.jpg";
+import foto1 from "@/assets/foto_1.jpeg";
+import foto3 from "@/assets/foto_3.jpeg";
+import foto5 from "@/assets/foto_5.jpeg";
+import foto6 from "@/assets/foto-6.jpeg";
+import foto7 from "@/assets/foto-7.jpeg";
+import bgMusic from "@/assets/Yiruma River Flows in You.mp3";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -165,7 +171,7 @@ function SlideCover() {
             Happy<br />Birthday
           </h1>
           <p className="mt-8 max-w-sm text-cream/90 text-sm md:text-base leading-relaxed animate-fade-up delay-2">
-            For my lovely Best Friend. A tribute to the person who makes life look easy.
+            Wanita Kuat Wanita Hebat. Ghefira Naila Arriyatillah
           </p>
           <button
             onClick={() =>
@@ -173,7 +179,7 @@ function SlideCover() {
             }
             className="mt-8 rounded-full border border-cream/80 bg-cream/95 text-wine px-8 py-3 text-xs font-semibold tracking-[0.25em] hover:bg-cream hover:scale-105 transition-all animate-fade-up delay-3"
           >
-            UNFOLD THIS
+            Baca yaa
           </button>
         </div>
 
@@ -200,7 +206,7 @@ function SlideCover() {
                   "radial-gradient(circle at 30% 30%, oklch(0.55 0.22 22), oklch(0.30 0.15 22))",
               }}
             >
-              R
+              G
             </div>
           </div>
           {/* name tag */}
@@ -213,10 +219,10 @@ function SlideCover() {
             }}
           >
             <p className="font-script text-wine-bright text-4xl md:text-5xl leading-none">
-              Rebecca
+              Ghefira Naila
             </p>
             <p className="font-script text-wine-bright text-4xl md:text-5xl leading-none mt-1">
-              Miles
+              Arriyatillah
             </p>
           </div>
         </div>
@@ -235,19 +241,10 @@ function SlideLetter() {
       <div className="grid md:grid-cols-2 gap-10 items-center w-full max-w-7xl mx-auto">
         <div className="text-cream animate-fade-up">
           <h2 className="font-script text-5xl md:text-7xl mb-8 drop-shadow">
-            Happy Birthday Rebecca
+            Happy Birthday Ghefira
           </h2>
           <p className="leading-relaxed text-sm md:text-base text-cream/90 max-w-md">
-            Twenty-one orbits around the sun and you still make every season feel like
-            golden hour. Thank you for the late-night laughter, the quiet listening, and
-            the way you turn ordinary Tuesdays into stories worth keeping. May this new
-            chapter be soft, bright, and brave — exactly like you.
-          </p>
-          <p className="mt-8 text-cream/90 text-sm md:text-base">
-            All my love,{" "}
-            <span className="font-semibold text-cream font-script text-2xl">
-              Lucy Pritchard
-            </span>
+            Walaupun kita baru kenal atau belum lama kenal, aku tahu akhir-akhir ini kamu lagi banyak hal yang dipikirin, tugas yang numpuk dan hal-hal lain yang mungkin nggak selalu mudah.
           </p>
         </div>
 
@@ -277,12 +274,12 @@ function SlideLetter() {
 
             <div className="absolute inset-6 top-12 flex flex-col gap-3">
               <Polaroid
-                src={portrait1}
+                src={foto1}
                 alt=""
                 className="w-44 h-40 self-start"
               />
               <Polaroid
-                src={portrait2}
+                src={portrait1}
                 alt=""
                 className="w-40 h-36 self-end"
               />
@@ -317,9 +314,8 @@ function SlideLetter() {
             style={{ ["--r" as never]: "8deg", transform: "rotate(8deg)" }}
           >
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-wine-deep" />
-            <p className="text-2xl leading-tight">Chapter 21</p>
-            <p className="text-base mt-2 leading-snug">
-              May this new chapter be your most iconic and golden era yet.
+            <p className="text-base leading-snug">
+              Semoga di fase ini, kamu nemuin banyak hal baik dan momen yang bikin kamu senyum.
             </p>
           </div>
         </div>
@@ -338,13 +334,17 @@ function SlideFunFact() {
       <div className="grid md:grid-cols-2 gap-10 items-center w-full max-w-7xl mx-auto">
         <div className="text-cream animate-fade-up">
           <h2 className="font-script text-6xl md:text-8xl drop-shadow">Fun Fact</h2>
-          <h3 className="mt-8 font-display tracking-[0.3em] text-cream font-bold">
-            THE TRUTH IS…
-          </h3>
+          <p className="mt-8 leading-relaxed text-sm md:text-base text-cream/90 max-w-md">
+            Banyak orang lagi cape sama tugas kuliah tapi kamuu, kamu bisa ngerjain berbagaihal sekaligus, dari ngajar, jadi operator di yayasan, dan tetap tanggung jawab sama semuanya, dan anehnya nilai kamu tetep bagus.
+          </p>
           <p className="mt-4 leading-relaxed text-sm md:text-base text-cream/90 max-w-md">
-            She remembers every birthday, every coffee order, every inside joke from
-            three Augusts ago. She is the friend who shows up early, stays late, and
-            brings snacks. The world is gentler because she is in it.
+            Dan yang paling bikin salut, kamu udah bisa berdiri di kaki kamu sendiri. Ngejalanin hidup tanpa banyak bergantung sesuatu yang nggak semua orang bisa lakuin.
+          </p>
+          <p className="mt-4 leading-relaxed text-sm md:text-base text-cream/90 max-w-md">
+            Kamu nggak banyak cerita, gabanyak ngeluh, tapi yang kamu bawa setiap hari itu berat dan kamu tetap bisa ngejalaninnya.
+          </p>
+          <p className="mt-4 leading-relaxed text-sm md:text-base text-cream/90 max-w-md">
+            aku salut banget ada orang seperti kamu gheff.
           </p>
         </div>
 
@@ -353,13 +353,13 @@ function SlideFunFact() {
             className="absolute left-4 top-6 w-[260px] h-[260px] md:w-[320px] md:h-[320px] animate-drop"
             style={{ ["--r" as never]: "-6deg", transform: "rotate(-6deg)" }}
           >
-            <Stamp src={meadow} alt="Joyful friends" className="w-full h-full" />
+            <Stamp src={foto3} alt="Joyful friends" className="w-full h-full" />
           </div>
           <div
             className="absolute right-4 bottom-4 w-[240px] h-[200px] md:w-[300px] md:h-[240px] animate-drop delay-2"
             style={{ ["--r" as never]: "5deg", transform: "rotate(5deg)" }}
           >
-            <Stamp src={dance} alt="Friends dancing" className="w-full h-full" />
+            <Stamp src={foto5} alt="Friends dancing" className="w-full h-full" />
           </div>
 
           {/* did you know note */}
@@ -368,10 +368,8 @@ function SlideFunFact() {
             style={{ ["--r" as never]: "10deg", transform: "rotate(10deg)" }}
           >
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-wine-deep" />
-            <p className="text-xl leading-tight">Did You Know ?</p>
-            <p className="text-base mt-2 leading-snug">
-              21 years of being the person who always knows the best songs and the best
-              stories.
+            <p className="text-base leading-snug">
+              21 tahun menjalani lebih banyak hal dari yang orang lihat dan kamu tetap bertahan.
             </p>
           </div>
 
@@ -419,7 +417,7 @@ function SlideMemories() {
             className="absolute left-2 top-8 w-[300px] md:w-[380px] h-[340px] md:h-[420px] animate-drop"
             style={{ ["--r" as never]: "-4deg", transform: "rotate(-4deg)" }}
           >
-            <Polaroid src={dance} alt="" className="w-full h-full" caption="us, summer '24" />
+            <Polaroid src={foto7} alt="" className="w-full h-full" caption="us, summer '24" />
             {/* binder clip */}
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-10 bg-[oklch(0.78_0.10_95)] rounded-sm shadow-md">
               <div className="absolute inset-x-2 top-1 h-1 bg-[oklch(0.62_0.08_95)] rounded" />
@@ -431,7 +429,7 @@ function SlideMemories() {
             className="absolute right-2 top-2 w-32 md:w-40 h-36 md:h-44 animate-drop delay-2"
             style={{ ["--r" as never]: "10deg", transform: "rotate(10deg)" }}
           >
-            <Polaroid src={meadow} alt="" className="w-full h-full" />
+            <Polaroid src={foto6} alt="" className="w-full h-full" />
           </div>
           {/* bottom polaroid with bow */}
           <div
@@ -446,14 +444,13 @@ function SlideMemories() {
             className="absolute -left-2 top-0 w-28 md:w-32 bg-cream-soft p-3 font-hand text-wine text-sm shadow-md animate-drop"
             style={{ ["--r" as never]: "-8deg", transform: "rotate(-8deg)" }}
           >
-            quei giorni più lunghi del normale, dove la quiete diventa il nostro tempo…
+            foto terbaik dari Ghefira Naila
           </div>
         </div>
 
         <div className="text-cream text-center md:text-left animate-fade-up">
-          <h2 className="font-script text-6xl md:text-8xl drop-shadow">Core Memories</h2>
-          <p className="mt-6 font-script text-2xl md:text-3xl text-cream/90 max-w-md mx-auto md:mx-0">
-            A curated collection of the days that turned into our favorite stories.
+          <p className="font-script text-2xl md:text-3xl text-cream/90 max-w-md mx-auto md:mx-0">
+            Ini foto yang aku ambil tanpa izin dari kamu, sorry yaa
           </p>
         </div>
       </div>
@@ -501,17 +498,38 @@ function SlideEternity() {
           />
         </svg>
 
-        <h2 className="font-script text-5xl md:text-7xl text-wine-bright text-center">
-          To Eternity
-        </h2>
-        <p className="mt-8 font-display italic text-wine text-center leading-loose text-base md:text-lg">
-          Here's to the friend who makes ordinary days feel like film stills, who remembers
-          the small things, and who turns every chapter into something worth keeping.
-          To you, to us, to the years still ahead — endlessly, gratefully, always.
-        </p>
-        <p className="mt-8 text-center text-wine font-semibold tracking-widest text-sm">
-          @reallygreatsite
-        </p>
+        <div className="font-display italic text-wine text-center leading-relaxed text-sm md:text-base space-y-4">
+          <p>
+            Aku nggak tau ini tepat di hari ulang tahun kamu atau bukan…<br />
+            dan mungkin ini terasa agak lebay<br />
+            tapi ini yang bisa aku kasih buat kamu.
+          </p>
+          <p>
+            Aku tau sekarang kamu lagi ada di fase yang nggak gampang—<br />
+            dari hal-hal di rumah yang mungkin belum sepenuhnya terasa nyaman,<br />
+            sampai pikiran kamu yang kayak nggak pernah beneran berhenti.
+          </p>
+          <p>
+            Dan di tengah semua itu, kamu tetap jalan.<br />
+            Tetap berusaha, tetap bertahan, dan tetap ngelakuin banyak hal.
+          </p>
+          <p>
+            Semoga di umur yang baru ini, pelan-pelan semuanya bisa membaik ya.<br />
+            Hal-hal yang berat bisa mulai reda,<br />
+            dan apa yang lagi kamu usahakan sekarang bisa berjalan dengan baik.
+          </p>
+          <p>
+            Nggak harus langsung sempurna, yang penting kamu tetap kuat dan nggak nyerah.
+          </p>
+        </div>
+        <div className="mt-8 text-center text-wine">
+          <p className="font-script text-3xl md:text-4xl text-wine-bright mb-2">
+            Selamat ulang tahun, Ghefira Naila Arriyatillah
+          </p>
+          <p className="font-display italic text-xs md:text-sm max-w-md mx-auto">
+            Semoga ke depan, kamu bisa ngerasain lebih banyak tenang dan hal-hal baik yang kamu pantas dapetin.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -530,9 +548,8 @@ function Dots({ count, active }: { count: number; active: number }) {
             slides[i]?.scrollIntoView({ behavior: "smooth" });
           }}
           aria-label={`Go to slide ${i + 1}`}
-          className={`h-3 w-3 rounded-full border border-cream transition-all ${
-            i === active ? "bg-cream scale-125" : "bg-transparent hover:bg-cream/50"
-          }`}
+          className={`h-3 w-3 rounded-full border border-cream transition-all ${i === active ? "bg-cream scale-125" : "bg-transparent hover:bg-cream/50"
+            }`}
         />
       ))}
     </div>
@@ -607,7 +624,10 @@ function Hearts({ count = 12 }: { count?: number }) {
 
 function Index() {
   const stageRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [active, setActive] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
   const slides = 5;
 
   useEffect(() => {
@@ -621,6 +641,32 @@ function Index() {
     return () => stage.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    // Attempt to auto-play immediately on load (might be blocked by browser)
+    if (audioRef.current && !isPlaying) {
+      audioRef.current.volume = 0.5;
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          console.log("Autoplay blocked. User needs to click Open.");
+        });
+    }
+  }, []);
+
+  const toggleAudio = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   // key per slide forces remount → replays all CSS animations on scroll-back
   const slideEls = [
     <SlideCover key={`c-${active === 0 ? "in" : "out"}`} />,
@@ -630,20 +676,64 @@ function Index() {
     <SlideEternity key={`e-${active === 4 ? "in" : "out"}`} />,
   ];
 
+  const handleOpen = () => {
+    setIsOpened(true);
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5;
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
+    }
+  };
+
   return (
-    <main ref={stageRef} className="snap-stage bg-gingham relative">
-      {/* Global ambient layers (fixed so they float above gingham, below content) */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        <Hearts count={14} />
-        <Sparkles count={20} />
+    <>
+      {/* Cover Overlay */}
+      <div
+        className={`fixed inset-0 z-[100] bg-wine-deep flex flex-col items-center justify-center transition-opacity duration-1000 ${isOpened ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      >
+        <p className="font-script text-cream text-5xl md:text-7xl mb-8 animate-pulse text-center px-4 leading-tight">
+          Untuk Ghefira Naila
+        </p>
+        <button
+          onClick={handleOpen}
+          className="bg-cream text-wine font-semibold px-8 py-3 rounded-full hover:scale-105 transition-transform tracking-widest text-sm shadow-xl"
+        >
+          BUKA SURAT
+        </button>
       </div>
-      {slideEls.map((el, i) => (
-        <div key={i} className="relative z-10">
-          {el}
+
+      <main ref={stageRef} className={`snap-stage bg-gingham relative ${!isOpened ? 'overflow-hidden h-screen' : ''}`}>
+        <audio ref={audioRef} src={bgMusic} loop autoPlay />
+
+        {/* Global ambient layers (fixed so they float above gingham, below content) */}
+        <div className="fixed inset-0 pointer-events-none z-[1]">
+          <Hearts count={14} />
+          <Sparkles count={20} />
         </div>
-      ))}
-      <Dots count={slides} active={active} />
-    </main>
+
+        {/* Music Toggle Button */}
+        <button
+          onClick={toggleAudio}
+          className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-cream border border-wine/20 rounded-full shadow-2xl flex items-center justify-center text-wine hover:scale-110 transition-transform"
+        >
+          {isPlaying ? (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 ml-1">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+
+        {slideEls.map((el, i) => (
+          <div key={i} className="relative z-10">
+            {el}
+          </div>
+        ))}
+        <Dots count={slides} active={active} />
+      </main>
+    </>
   );
 }
 
